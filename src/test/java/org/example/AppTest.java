@@ -2,22 +2,15 @@ package org.example;
 
 import static org.junit.Assert.assertTrue;
 
+import config.TestConfig;
 import org.junit.Test;
 import static io.restassured.RestAssured.*;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
+public class AppTest extends TestConfig {
+
 
 
     @Test
@@ -25,7 +18,7 @@ public class AppTest
         given()
                 .log().all()
                 .when()
-                .get("https://videogamedb.uk/api/videogame")
+                .get("/videogame")
                 .then()
                 .log().all();
 

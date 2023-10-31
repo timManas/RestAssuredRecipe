@@ -1,0 +1,29 @@
+REST Assured
+
+Notes #------------------------
+
+1. We execute the setup file first since it has the @BeforeClass tag
+
+
+Best Practices #------------------------
+
+1. Use a baseClass setup to configure things to run before the test executes (ex: TestConfig.java -> setup())
+
+Questions  #------------------------
+
+Q1. What is the given, when & then ?
+> Syntatic sugar which creates allows us to create our testcases like stories
+> Given this ... When this ... Then do this ...
+
+Given - Scenario Setup
+          - Configuration
+          - Headers
+          - Parameters
+
+WHEN  - Do some action
+        - GET an endpoint
+        - POST an endpoint
+
+THEN  - Assertions
+        - Check response code
+        - Extract Data
