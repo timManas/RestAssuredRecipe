@@ -2,6 +2,7 @@ package config;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.client.methods.RequestBuilder;
 import org.junit.Before;
@@ -18,11 +19,15 @@ public class TestConfig {
         RestAssured.basePath = "api/v2";                                      // Set base path ... This is /api/v2
         RestAssured.port = 443;                     // Set base Port
 
-        RequestSpecBuilder rb = new RequestSpecBuilder();
-        RestAssured.requestSpecification =  rb.setContentType("application/json").
+        // Specify the request specification
+        RequestSpecBuilder reqSpecBuilder = new RequestSpecBuilder();
+        RestAssured.requestSpecification =  reqSpecBuilder.setContentType("application/json").
                 addHeader("Accept", "application/" + HEADER_TYPE).
                 build();
 
+        // Specify the response specification. This checks if we have a status code 200
+        ResponseSpecBuilder resSpecBuilder = new ResponseSpecBuilder();
+        RestAssured.responseSpecification = resSpecBuilder.expectStatusCode(200).build();
 
     }
 

@@ -39,3 +39,12 @@ Q2a. Why do we need it ?
 - The "Content-Type=application/json" -  sets the content type of the response we get back.
   In this case, we get back a json.
 - Try setting it to xml and you should the response is to xml
+
+
+Q3. What is the request Specifications ?
+> Actions  to include in EVERY HTTP request
+Ex: Headers, Cookies, Form Parameters, BASE URL
+
+Q4. What are Response Specifications ?
+> Actions to take AFTER every HTTP request
+Ex: Check status code, Check content type, Response Time, Check headers
