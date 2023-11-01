@@ -1,10 +1,15 @@
 package config;
 
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
+import org.apache.http.client.methods.RequestBuilder;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
 public class TestConfig {
+
+    private static String HEADER_TYPE = "json";  // This will modify what type of response we get back (json or xml)
 
     @BeforeClass
     public static void setupBeforeClass() {
@@ -12,13 +17,20 @@ public class TestConfig {
         RestAssured.baseURI = "https://videogamedb.uk/";         // Set base URI
         RestAssured.basePath = "api/v2";                                      // Set base path ... This is /api/v2
         RestAssured.port = 443;                     // Set base Port
+
+        RequestSpecBuilder rb = new RequestSpecBuilder();
+        RestAssured.requestSpecification =  rb.setContentType("application/json").
+                addHeader("Accept", "application/" + HEADER_TYPE).
+                build();
+
+
     }
 
     @Before
     public void setupBefore() {
         System.out.println("----- Execute Before Setup ----- ");
-        RestAssured.baseURI = "https://videogamedb.uk/";         // Set base URI
-        RestAssured.basePath = "api/v2";                                      // Set base path ... This is /api/v2
-        RestAssured.port = 443;                     // Set base Port
+
     }
+
+
 }

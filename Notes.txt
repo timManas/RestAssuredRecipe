@@ -27,3 +27,15 @@ WHEN  - Do some action
 THEN  - Assertions
         - Check response code
         - Extract Data
+
+Q2. What is the requestSpecification ? Why do we need it ?
+> This specifies the headers. When you execute you should see this in the request:
+Path params:	<none>
+Headers:		Accept=application/json
+				Content-Type=application/json
+Cookies:		<none>
+
+Q2a. Why do we need it ?
+- The "Content-Type=application/json" -  sets the content type of the response we get back.
+  In this case, we get back a json.
+- Try setting it to xml and you should the response is to xml
