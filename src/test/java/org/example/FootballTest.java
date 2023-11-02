@@ -4,6 +4,7 @@ import config.FootballConfig;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class FootballTest extends FootballConfig {
 
@@ -29,4 +30,32 @@ public class FootballTest extends FootballConfig {
                 .get("/areas")
        .then();
     }
+
+    // URL  - https://api.football-data.org/v4/teams/57
+    // Change the value to 1886 and it will fail
+    // Expected: <1887>
+    // Actual: <1886>
+    @Test
+    public void getDateFounded() {
+        given()
+        .when()
+            .get("teams/57")
+        .then()
+            .body("founded", equalTo(1886));        // Check key "founded" contains value 1886
+    }
+
+    // https://api.football-data.org/v4/competitions/2021/teams
+    @Test
+    public void validateFirstTeamName() {
+        given()
+        .when()
+           .get("competitions/2021/teams")
+        .then()
+           .body("teams.name[0]", equalTo("Arsenal FC"));
+    }
+
+
+
+
+
 }
