@@ -23,7 +23,7 @@ public class FootballConfig {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         RestAssured.requestSpecification = requestSpecBuilder
                 .setBaseUri("https://api.football-data.org")
-                .setBasePath("/v4/matches")
+                .setBasePath("/v4")
                 .setContentType("application/" + CONTENT_TYPE)
                 .addHeader("X-Auth-Token", API_TOKEN)
                 .addHeader("X-Response-Control", "minified" ) // Reduces meta data which comes from API
