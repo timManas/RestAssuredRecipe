@@ -48,3 +48,12 @@ Ex: Headers, Cookies, Form Parameters, BASE URL
 Q4. What are Response Specifications ?
 > Actions to take AFTER every HTTP request
 Ex: Check status code, Check content type, Response Time, Check headers
+
+Q5. What are HTTP Request ?
+- GET: Retrieve data from an endpoint
+- POST: Send data to an endpoint
+- PUT: Update a resource
+- DELETE: Delete a resource
+
+  C    R    U    D
+POST  GET  PUT  DELETE

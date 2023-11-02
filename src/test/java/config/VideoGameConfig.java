@@ -3,6 +3,8 @@ package config;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.client.methods.RequestBuilder;
 import org.junit.Before;
@@ -24,6 +26,8 @@ public class VideoGameConfig {
                 .setPort(443)
                 .setContentType("application/json")
                 .addHeader("Accept", "application/" + HEADER_TYPE)
+                .addFilter(new RequestLoggingFilter())          // This will always log data into the console ... Add this in
+                .addFilter(new ResponseLoggingFilter())         // Replaces the .log().all()
                 .build();
 
         // Specify the response specification. This checks if we have a status code 200
