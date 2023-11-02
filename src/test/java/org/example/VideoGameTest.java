@@ -8,6 +8,14 @@ import static io.restassured.RestAssured.given;
 
 public class VideoGameTest extends VideoGameConfig {
 
+    private String gameBodyJSON = "{\n" +
+            "  \"category\": \"Platform\",\n" +
+            "  \"name\": \"Mario\",\n" +
+            "  \"rating\": \"Mature\",\n" +
+            "  \"releaseDate\": \"2012-05-04\",\n" +
+            "  \"reviewScore\": 85\n" +
+            "}";
+
     // Notice this does not have the .log().all() since we added a filter in the VideoGameConfig
     @Test
     public void getAllGames() {
@@ -19,14 +27,6 @@ public class VideoGameTest extends VideoGameConfig {
 
     @Test
     public void createNewGamebyJSON() {
-        String gameBodyJSON = "{\n" +
-                "  \"category\": \"Platform\",\n" +
-                "  \"name\": \"Mario\",\n" +
-                "  \"rating\": \"Mature\",\n" +
-                "  \"releaseDate\": \"2012-05-04\",\n" +
-                "  \"reviewScore\": 85\n" +
-                "}";
-
         given()
             .body(gameBodyJSON)
         .when()
@@ -52,7 +52,26 @@ public class VideoGameTest extends VideoGameConfig {
         .when()
             .post(VideoGameEndpoints.ALL_VIDEO_GAMES)
         .then();
+    }
 
+    @Test
+    public void updateGame() {
+        String id = "3";
+        given()
+            .body(gameBodyJSON)
+        .when()
+            .put(VideoGameEndpoints.SINGLE_VIDEO_GAME.replace("{videoGameId}", id))
+        .then();
+    }
 
+    @Test
+    public void deleteGame() {
+        String id = "8";
+        given()
+            .body(gameBodyJSON)
+            .accept("text/plain")
+        .when()
+            .delete(VideoGameEndpoints.SINGLE_VIDEO_GAME.replace("{videoGameId}", id))
+        .then();
     }
  }
