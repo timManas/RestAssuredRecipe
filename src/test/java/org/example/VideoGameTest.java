@@ -74,4 +74,16 @@ public class VideoGameTest extends VideoGameConfig {
             .delete(VideoGameEndpoints.SINGLE_VIDEO_GAME.replace("{videoGameId}", id))
         .then();
     }
+
+
+    @Test
+    public void updateGameUsingPathParameter() {
+        String id = "3";
+        given()
+                .body(gameBodyJSON)
+                .pathParam("videoGameId", id)
+                .when()
+                .put(VideoGameEndpoints.SINGLE_VIDEO_GAME)
+                .then();
+    }
  }

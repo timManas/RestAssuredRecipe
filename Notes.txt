@@ -58,3 +58,8 @@ Q5. What are HTTP Request ?
 
   C    R    U    D
 POST  GET  PUT  DELETE
+
+Q6. What is a path parameter ?
+Ex: www.helloworld.com/videogame/{videoGameId}
+- The {videoGameId} is the path parameter
+- Path parameter replace the {xyz} into an a value
