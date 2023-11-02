@@ -63,3 +63,5 @@ Q6. What is a path parameter ?
 Ex: www.helloworld.com/videogame/{videoGameId}
 - The {videoGameId} is the path parameter
 - Path parameter replace the {xyz} into an a value
+
+Q7. How to extract the whole JSON response body ?

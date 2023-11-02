@@ -1,9 +1,11 @@
 package org.example;
 
 import config.FootballConfig;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class FootballTest extends FootballConfig {
@@ -55,7 +57,23 @@ public class FootballTest extends FootballConfig {
     }
 
 
+    @Test
+    public void extractDatafromResponse() {
+        String responseBody = get("teams/57").asString();
+        System.out.println("ResponseBody: " + responseBody);
+    }
 
+    @Test
+    public void extractAllTeamData_ThenValidate() {
+        Response response = given()
+                .when()
+                    .get("teams/57")
+                .then()
+                    .contentType(ContentType.JSON)
+                    .extract().response();          // This extracts the response body
 
+        System.out.println("response: " + response.asString());
+
+    }
 
 }
