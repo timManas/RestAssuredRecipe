@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 
 public class VideoGameConfig {
 
+    private static String CONTENT_TYPE = "json";
     private static String HEADER_TYPE = "json";  // This will modify what type of response we get back (json or xml)
 
     @BeforeClass
@@ -24,7 +25,7 @@ public class VideoGameConfig {
                 .setBaseUri("https://videogamedb.uk/")
                 .setBasePath("api/v2")
                 .setPort(443)
-                .setContentType("application/json")
+                .setContentType("application/" + CONTENT_TYPE)                 // This states what format WE are sending
                 .addHeader("Accept", "application/" + HEADER_TYPE)
                 .addFilter(new RequestLoggingFilter())          // This will always log data into the console ... Add this in
                 .addFilter(new ResponseLoggingFilter())         // Replaces the .log().all()

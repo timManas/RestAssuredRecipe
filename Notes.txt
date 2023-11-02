@@ -3,7 +3,8 @@ REST Assured
 Notes #------------------------
 
 1. We execute the setup file first since it has the @BeforeClass tag
-
+2. You can override parameters in the config within the tests
+    Ex: .contentType() in the test body
 
 Best Practices #------------------------
 
