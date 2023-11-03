@@ -65,3 +65,4 @@ Ex: www.helloworld.com/videogame/{videoGameId}
 - Path parameter replace the {xyz} into an a value
 
 Q7. How to extract the whole JSON response body ?
+- Use extract().response()
