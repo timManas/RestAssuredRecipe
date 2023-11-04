@@ -20,6 +20,7 @@ public class VideoGame {
     private String rating;
     private String releaseDate;
     private Integer reviewScore;
+    private Integer id;
 
     /**
      * No args constructor for use in serialization
@@ -35,6 +36,9 @@ public class VideoGame {
      * @param name
      * @param rating
      * @param category
+
+     Note - id is created dynamically by the system hence we dont have to define.
+     But maybe we should ....
      */
     public VideoGame(String category, String name, String rating, String releaseDate, Integer reviewScore) {
         super();
@@ -85,4 +89,11 @@ public class VideoGame {
         this.reviewScore = reviewScore;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

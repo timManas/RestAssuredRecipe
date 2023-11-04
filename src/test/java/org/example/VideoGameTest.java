@@ -5,6 +5,7 @@ import config.VideoGameEndpoints;
 import io.restassured.RestAssured;
 import io.restassured.matcher.RestAssuredMatchers;
 import io.restassured.module.jsv.JsonSchemaValidator;
+import io.restassured.response.Response;
 import objects.VideoGame;
 import org.junit.Test;
 
@@ -117,7 +118,21 @@ public class VideoGameTest extends VideoGameConfig {
                 .body(RestAssuredMatchers.matchesXsdInClasspath("VideoGameXSD.xsd"));
     }
 
-//https://videogamedb.uk:443/api/v2/videogame/5
+
+    @Test
+    public void convertJsonToPojo() {
+        Response respone = given()
+                    .pathParam("videoGameId", 5)
+                .when()
+                    .get(VideoGameEndpoints.SINGLE_VIDEO_GAME);
+
+        // This is the POJO
+        // Creates an object to type VideoGame based from the JSON
+        VideoGame videoGame = respone.getBody().as(VideoGame.class);
+        System.out.println("videoGame: " + videoGame.toString());
+    }
+
+    //https://videogamedb.uk:443/api/v2/videogame/5
     @Test
     public void testVideoGameSchemaJSON() {
         given()
