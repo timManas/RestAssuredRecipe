@@ -2,6 +2,8 @@ package org.example;
 
 import config.VideoGameConfig;
 import config.VideoGameEndpoints;
+import io.restassured.RestAssured;
+import io.restassured.matcher.RestAssuredMatchers;
 import objects.VideoGame;
 import org.junit.Test;
 
@@ -100,5 +102,17 @@ public class VideoGameTest extends VideoGameConfig {
         .when()
                 .post(VideoGameEndpoints.ALL_VIDEO_GAMES)
         .then();
+    }
+
+    //https://videogamedb.uk:443/api/v2/videogame/5
+    @Test
+    public void testVideoGameSchemaXML() {
+        given()
+                .pathParam("videoGameId", 5)
+                .accept("application/xml")
+        .when()
+                .get(VideoGameEndpoints.SINGLE_VIDEO_GAME)
+        .then()
+                .body(RestAssuredMatchers.matchesXsdInClasspath("VideoGameXSD.xsd"));
     }
  }
