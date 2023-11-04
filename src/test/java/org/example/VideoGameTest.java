@@ -2,6 +2,7 @@ package org.example;
 
 import config.VideoGameConfig;
 import config.VideoGameEndpoints;
+import objects.VideoGame;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -81,9 +82,23 @@ public class VideoGameTest extends VideoGameConfig {
         String id = "3";
         given()
                 .body(gameBodyJSON)
-                .pathParam("videoGameId", id)
-                .when()
+                .pathParam("videoGameId", id)           //  Replace videoGameId with "id" from the second argument
+        .when()
                 .put(VideoGameEndpoints.SINGLE_VIDEO_GAME)
-                .then();
+        .then();
+    }
+
+
+    // This is serialization. Take an object and create a JSON representation of it be used
+    @Test
+    public void testVideoGameSerializationByJson() {
+        // Create an object
+        VideoGame videoGame = new VideoGame("Shooter", "Virtual Cop", "Mature", "Nov3", 100);
+
+        given()
+                .body(videoGame)
+        .when()
+                .post(VideoGameEndpoints.ALL_VIDEO_GAMES)
+        .then();
     }
  }

@@ -66,3 +66,22 @@ Ex: www.helloworld.com/videogame/{videoGameId}
 
 Q7. How to extract the whole JSON response body ?
 - Use extract().response()
+
+
+Q8. What is serialization ?
+- Converts an object to JSON
+- We take the object in form then use a POST request
+to put the object in the body
+Ex:
+    public void testVideoGameSerializationByJson() {
+        // Create an object
+        VideoGame videoGame = new VideoGame("Shooter", "Virtual Cop", "Mature", "Nov3", 100);
+
+        given()
+                .body(videoGame)
+        .when()
+                .post(VideoGameEndpoints.ALL_VIDEO_GAMES)
+        .then();
+    }
+
+
