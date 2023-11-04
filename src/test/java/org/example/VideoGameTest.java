@@ -9,7 +9,8 @@ import io.restassured.response.Response;
 import objects.VideoGame;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.lessThan;
 
 public class VideoGameTest extends VideoGameConfig {
 
@@ -143,4 +144,18 @@ public class VideoGameTest extends VideoGameConfig {
                 .then()
         .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("VideoGameJSONSchema.json"));
     }
+
+    @Test
+    public void captureResponseTime() {
+        long responseTime = get(VideoGameEndpoints.ALL_VIDEO_GAMES).time();
+        System.out.println("responseTime in Milli Seconds: " + responseTime);
+    }
+
+    @Test
+    public void assertResponseTime() {
+        get(VideoGameEndpoints.ALL_VIDEO_GAMES)
+                .then()
+                .time(lessThan(6000L));
+    }
+
  }
