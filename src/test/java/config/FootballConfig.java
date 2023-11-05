@@ -11,8 +11,8 @@ import static data.Data.API_TOKEN;
 
 public class FootballConfig {
 
-    private static String CONTENT_TYPE = "json";
-    private static String HEADER_TYPE = "json";  // This will modify what type of response we get back (json or xml)
+    private static final String CONTENT_TYPE = "json";
+    private static final String HEADER_TYPE = "json";  // This will modify what type of response we get back (json or xml)
 //    private static String API_TOKEN = "a303f8170f5143aab552a13f5df58c9a";
 
     @BeforeClass

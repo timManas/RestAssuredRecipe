@@ -87,3 +87,6 @@ Ex:
 Q9. What is Schema ?
 Q10. What is XSD  file ?
 Q11. How do we use Schema to test ?
+Q12. What is Gpath ?
+Q13. What is 'it' in Gpath ?
+

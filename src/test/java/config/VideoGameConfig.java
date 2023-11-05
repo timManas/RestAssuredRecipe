@@ -12,8 +12,8 @@ import org.junit.BeforeClass;
 
 public class VideoGameConfig {
 
-    private static String CONTENT_TYPE = "json";
-    private static String HEADER_TYPE = "json";  // This will modify what type of response we get back (json or xml)
+    private static final String CONTENT_TYPE = "json";
+    private static final String HEADER_TYPE = "json";  // This will modify what type of response we get back (json or xml)
 
     @BeforeClass
     public static void setupBeforeClass() {

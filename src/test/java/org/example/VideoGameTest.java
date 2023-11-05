@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class VideoGameTest extends VideoGameConfig {
 
-    private String gameBodyJSON = "{\n" +
+    private final String gameBodyJSON = "{\n" +
             "  \"category\": \"Platform\",\n" +
             "  \"name\": \"Mario\",\n" +
             "  \"rating\": \"Mature\",\n" +
