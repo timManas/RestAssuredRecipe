@@ -58,5 +58,40 @@ public class GpathJSONTests extends FootballConfig {
         System.out.println("sumOfIds: " + sumOfIds);
     }
 
+    // Find specific players with a specific position and nationality and put them in a map
+    // Combines the findAll and find
+    // Acts as filter
+    @Test
+    public void extractMapWithFindAndFindAllWithParameters() {
+        String position = "Offence";
+        String nationality = "England";
+
+        Response response = get("teams/57");
+        Map<String, ? > playerOfCertainPosition = response.path(
+                "squad.findAll { it.position == '%s'}.find { it.nationality == '%s'}",
+                position, nationality
+        );
+
+        System.out.println("playerOfCertainPosition: " + playerOfCertainPosition);
+    }
+
+
+    // Find all players with a specific position and nationality and put them in a map
+    // Notice we use findAll twice here
+    @Test
+    public void extractMultiplePlayers() {
+        String position = "Offence";
+        String nationality = "England";
+
+        Response response = get("teams/57");
+        List<String> allPlayersOfCertainPosition = response.path(
+                "squad.findAll { it.position == '%s'}.findAll { it.nationality == '%s'}",
+                position, nationality
+        );
+
+        System.out.println("allPlayersOfCertainPosition: " + allPlayersOfCertainPosition);
+    }
+
+
 
 }
