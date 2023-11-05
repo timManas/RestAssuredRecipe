@@ -85,8 +85,24 @@ Ex:
     }
 
 Q9. What is Schema ?
+- Think of it as the blueprint for the database. These are the defined key of the key/value pair
+
 Q10. What is XSD  file ?
+- Stands for XML Schema Definition
+- Schema for XML file
+
 Q11. How do we use Schema to test ?
+- We can validate if a response follows the schema ...since this is the blue print
+
 Q12. What is Gpath ?
+- It is path expression to find specific elements from the response
+- Similar to xpath for XML
+- Use Gpath when you have nested POJO's or dealing with XML
+- Use 'response.path'  - This finds using Gpath
+    > Then specify what your looking for
+    Ex: response.path("teams.find { it.name == 'Manchester United FC'}");
+    Find all teams with name "Machester United FC"
+
+
 Q13. What is 'it' in Gpath ?
 
